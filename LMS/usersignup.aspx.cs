@@ -23,13 +23,16 @@ namespace LMS
         {
             if (checkMemberExists())
             {
+                
 
                 Response.Write("<script>alert('Member Already Exist with this Member ID, try other ID');</script>");
             }
             else
             {
+                //Response.Write("<script>alert('Member Already Exist with this Member ID, try other ID');</script>");
                 signUpNewMember();
             }
+           
         }
 
         // user defined method
@@ -42,7 +45,7 @@ namespace LMS
                 {
                     con.Open();
                 }
-                SqlCommand cmd = new SqlCommand("SELECT * from member_master_table where member_id='" + TextBox8.Text.Trim() + "';", con);
+                SqlCommand cmd = new SqlCommand("SELECT * from member_master_tbl where member_id='" + TextBox8.Text.Trim() + "';", con);
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
@@ -63,15 +66,16 @@ namespace LMS
         }
         void signUpNewMember()
         {
-            //Response.Write("<script>alert('Testing');</script>");
+           // Response.Write("<script>alert('Testing');</script>");
             try
             {
                 SqlConnection con = new SqlConnection(strcon);
                 if (con.State == ConnectionState.Closed)
                 {
                     con.Open();
+                   
                 }
-                SqlCommand cmd = new SqlCommand("INSERT INTO member_master_table(full_name,dob,contact_no,email,state,city,pincode,full_address,member_id,password,account_status) values(@full_name,@dob,@contact_no,@email,@state,@city,@pincode,@full_address,@member_id,@password,@account_status)", con);
+                SqlCommand cmd = new SqlCommand("INSERT INTO member_master_tbl(full_name,dob,contact_no,email,state,city,pincode,full_address,member_id,password,account_status) values(@full_name,@dob,@contact_no,@email,@state,@city,@pincode,@full_address,@member_id,@password,@account_status)", con);
                 cmd.Parameters.AddWithValue("@full_name", TextBox1.Text.Trim());
                 cmd.Parameters.AddWithValue("@dob", TextBox2.Text.Trim());
                 cmd.Parameters.AddWithValue("@contact_no", TextBox3.Text.Trim());
@@ -85,6 +89,7 @@ namespace LMS
                 cmd.Parameters.AddWithValue("@account_status", "pending");
                 cmd.ExecuteNonQuery();
                 con.Close();
+
                 Response.Write("<script>alert('Sign Up Successful. Go to User Login to Login');</script>");
             }
             catch (Exception ex)
