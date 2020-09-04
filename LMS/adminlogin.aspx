@@ -8,6 +8,7 @@
             <div class="card">
                <div class="card-body">
                   <div class="row">
+
                      <div class="col">
                         <center>
                            <img width="150px" src="imgs/adminuser.png"/>
