@@ -88,7 +88,7 @@
                      <div class="col-md-4">
                         <label>Zip code</label>
                         <div class="form-group">
-                           <asp:TextBox class="form-control" ID="TextBox7" runat="server" placeholder="Pincode" TextMode="Number"></asp:TextBox>
+                           <asp:TextBox class="form-control" ID="TextBox7" runat="server" placeholder="Zip code" TextMode="Number"></asp:TextBox>
                         </div>
                      </div>
                   </div>
