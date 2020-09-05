@@ -10,6 +10,7 @@ using System.Web.UI.WebControls;
 
 namespace LMS
 {
+
     public partial class userlogin : System.Web.UI.Page
     {
 
@@ -20,9 +21,7 @@ namespace LMS
         }
 
         // user login
-        
-
-        protected void Button1_Click1(object sender, EventArgs e)
+        protected void Button1_Click(object sender, EventArgs e)
         {
             try
             {
@@ -38,13 +37,11 @@ namespace LMS
                 {
                     while (dr.Read())
                     {
-                        //Response.Write("<script>alert('" + dr.GetValue(8).ToString() + "');</script>");
-                        Response.Write("<script>alert('Successful login');</script>");
+                        Response.Write("<script>alert('Login Successful');</script>");
                         Session["username"] = dr.GetValue(8).ToString();
-                        Session["fullname"] = dr.GetValue(2).ToString();
+                        Session["fullname"] = dr.GetValue(0).ToString();
                         Session["role"] = "user";
                         Session["status"] = dr.GetValue(10).ToString();
-                        //Session["status"] = dr.GetValue(10).ToString();
                     }
                     Response.Redirect("homepage.aspx");
                 }
@@ -58,6 +55,15 @@ namespace LMS
             {
 
             }
+
+            // Response.Write("<script>alert('Button click');</script>");
         }
+
+
+
+
+        // user defined functions
+
+
     }
 }
